@@ -3,7 +3,7 @@ import { GeneratorComponent } from './GeneratorComponent'
 export * from './GeneratorComponent'
 
 /**
- * Transform your generator function to a React.js Component.
+ * Transform your generator function into a React.js Component.
  * 
  * @param fn The async generator function.
  * @usage
@@ -31,10 +31,10 @@ export const WithGenerator = <
 	T = unknown
 >(
 	fn: ( props: T ) => AsyncGenerator<React.ReactNode, React.ReactNode, React.ReactNode>
-): React.FC<T> => {
+) => {
 
-	const WithGeneratorComponent = (
-		( props: T ) => (
+	const WithGeneratorComponent: React.FC<T> = (
+		props => (
 			<GeneratorComponent generator={ fn( props ) } />
 		)
 	)
