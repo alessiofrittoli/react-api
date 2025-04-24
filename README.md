@@ -140,6 +140,74 @@ export const AppProviders: React.FC<React.PropsWithChildren> = ( { children } ) 
 
 ---
 
+###### `WithGenerator`
+
+Transform your generator function into a React.js Component.
+
+<details>
+
+<summary style="cursor:pointer">Type Parameters</summary>
+
+| Parameter | Default   | Description |
+|-----------|-----------|-------------|
+| `T`       | `unknown` | Component types. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Parameters</summary>
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `fn`      | `( props: T ) => AsyncGenerator<React.ReactNode, React.ReactNode, React.ReactNode>` | The async generator function. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Usage</summary>
+
+###### Stream Content from a React Component
+
+```tsx
+import { WithGenerator } from '@alessiofrittoli/react-api'
+// or
+import { WithGenerator } from '@alessiofrittoli/react-api/components'
+
+interface StepProps
+{
+  someProp: string
+}
+
+export const Steps = WithGenerator<StepProps>(
+  async function* ( { someProp } )
+  {
+    let i = 0
+
+    yield <h1>Step { ++i } - { someProp }</h1>
+
+    // simulate an async task by awaiting a void Promise
+    await new Promise<void>( resolve => setTimeout( resolve, 2000 ) )
+
+    yield <h1>Step { ++i } - { someProp }</h1>
+
+    // simulate an async task by awaiting a void Promise
+    await new Promise<void>( resolve => setTimeout( resolve, 2000 ) )
+
+    return <h1>Step { ++i } - { someProp } - Stream finished</h1>
+  }
+)
+```
+
+</details>
+
+---
+
 ### Development
 
 #### Install depenendencies
