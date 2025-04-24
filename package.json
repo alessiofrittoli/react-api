@@ -43,6 +43,11 @@
 			"types": "./dist/components/index.d.ts",
 			"import": "./dist/components/index.mjs",
 			"require": "./dist/components/index.js"
+		},
+		"./utils": {
+			"types": "./dist/utils.d.ts",
+			"import": "./dist/utils.mjs",
+			"require": "./dist/utils.js"
 		}
 	},
 	"sideEffects": false,
@@ -70,7 +75,8 @@
 		"//4a": "*********************************************************************",
 		"//4b": "************************ TARGETED UNIT TESTS ************************",
 		"//4c": "*********************************************************************",
-		"test:components": "pnpm test:watch components/*"
+		"test:components": "pnpm test:watch components/*",
+		"test:utils": "pnpm test:watch utils.test.tsx"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

@@ -23,6 +23,8 @@
 
 - [Getting started](#getting-started)
 - [API Reference](#api-reference)
+  - [Components](#components)
+  - [Utilities](#utilities)
 - [Development](#development)
   - [Install depenendencies](#install-depenendencies)
   - [Build the source code](#build-the-source-code)
@@ -202,6 +204,130 @@ export const Steps = WithGenerator<StepProps>(
     return <h1>Step { ++i } - { someProp } - Stream finished</h1>
   }
 )
+```
+
+</details>
+
+---
+
+#### Utilities
+
+##### `isComponentType`
+
+Check if the given `input` is a React ComponentType.
+
+<details>
+
+<summary style="cursor:pointer">Type Parameters</summary>
+
+| Parameter | Default   | Description |
+|-----------|-----------|-------------|
+| `P`       | `unknown` | The props the component accepts. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Parameters</summary>
+
+| Parameter | Type      | Description         |
+|-----------|-----------|---------------------|
+| `input`   | `unknown` | The input to check. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Returns</summary>
+
+Type: `input is React.ComponentType<P>`
+
+- `true` if the given `input` is a React ComponentType.
+- `false` otherwise.
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Usage</summary>
+
+```tsx
+import { isComponentType } from '@alessiofrittoli/react-api'
+// or
+import { isComponentType } from '@alessiofrittoli/react-api/utils'
+
+const somefunction = ( Component: React.ComponentType | React.ReactNode ) => {
+
+ if ( isComponentType( Component ) ) {
+  return <Component />
+ }
+
+ return (
+  <>{ Component }</>
+ )
+
+}
+```
+
+</details>
+
+---
+
+##### `isReactNode`
+
+Check if the given `input` is a React Node.
+
+<details>
+
+<summary style="cursor:pointer">Parameters</summary>
+
+| Parameter | Type      | Description         |
+|-----------|-----------|---------------------|
+| `input`   | `unknown` | The input to check. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Returns</summary>
+
+Type: `input is React.ReactNode`
+
+- `true` if the given `input` is a React Node.
+- `false` otherwise.
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Usage</summary>
+
+```tsx
+import { isReactNode } from '@alessiofrittoli/react-api'
+// or
+import { isReactNode } from '@alessiofrittoli/react-api/utils'
+
+const somefunction = ( Component: React.ComponentType | React.ReactNode ) => {
+
+ if ( isReactNode( Component ) ) {
+  return <>{ Component }</>
+ }
+
+ return (
+  <Component />
+ )
+
+}
 ```
 
 </details>
