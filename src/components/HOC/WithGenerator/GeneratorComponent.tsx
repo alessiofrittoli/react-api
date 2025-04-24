@@ -1,14 +1,11 @@
 import { Suspense } from 'react'
 
-// type ReactNode = (
-// 	| string | number | boolean | null | undefined
-// 	| React.ReactElement | Iterable<ReactNode> | React.ReactPortal
-// )
 
 interface GeneratorComponentProps
 {
 	generator: AsyncGenerator<React.ReactNode, React.ReactNode, React.ReactNode>
 }
+
 
 export const GeneratorComponent: React.FC<GeneratorComponentProps> = (
 	async ( { generator } ) => {
