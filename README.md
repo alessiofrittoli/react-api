@@ -22,6 +22,7 @@
 ### Table of Contents
 
 - [Getting started](#getting-started)
+- [API Reference](#api-reference)
 - [Development](#development)
   - [Install depenendencies](#install-depenendencies)
   - [Build the source code](#build-the-source-code)
@@ -46,6 +47,96 @@ or using `pnpm`
 ```bash
 pnpm i @alessiofrittoli/react-api
 ```
+
+---
+
+### API Reference
+
+#### Components
+
+##### High Order Components
+
+###### `<Stack />`
+
+Easily stack components avoiding creating a big Component stack pyramid.
+
+<details>
+
+<summary style="cursor:pointer">Component Props</summary>
+
+| Property     | Type | Description |
+|--------------|------|-------------|
+| `components` | `StackComponent[]` | An Array of Components or Component and props. The Component must accept and return children. |
+| `children`   | `React.ReactNode`  | (Optional) The Component children. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Usage</summary>
+
+###### Basic usage
+
+```tsx
+import { Stack } from '@alessiofrittoli/react-api'
+// or
+import { Stack } from '@alessiofrittoli/react-api/components'
+
+export const ProviderExample: React.FC<React.PropsWithChildren> = ( { children } ) => {
+  // ...
+  return (
+    <div>{ children }</div>
+  )
+}
+
+export const AppProviders: React.FC<React.PropsWithChildren> = ( { children } ) => (
+  <Stack components={ [
+    ProviderExample,
+    AppProvider1,
+    AppProvider2,
+    AppProvider3,
+    // ...
+  ] }>{ children }</Stack>
+)
+```
+
+---
+
+###### Component with props
+
+Use `StackComponent<typeof ComponentReference>` to add type safety to the passed props.
+
+```tsx
+import { Stack, type StackComponent } from '@alessiofrittoli/react-api'
+// or
+import { Stack, type StackComponent } from '@alessiofrittoli/react-api/components'
+
+type ProviderExampleProps = React.PropsWithChildren<{
+  /** Example required prop */
+  className: string
+}>
+
+
+export const ProviderExample: React.FC<React.PropsWithChildren> = (
+  { className, children }
+) => (
+  <div className={ className }>{ children }</div>
+)
+
+export const AppProviders: React.FC<React.PropsWithChildren> = ( { children } ) => (
+  <Stack components={ [
+    [ ProviderExample, { className: 'some-class-name' } ] as StackComponent<typeof ProviderExample>,
+    AppProvider1,
+    AppProvider2,
+    AppProvider3,
+    // ...
+  ] }>{ children }</Stack>
+)
+```
+
+</details>
 
 ---
 

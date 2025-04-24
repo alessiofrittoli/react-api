@@ -6,6 +6,7 @@ export type StackComponent<
 
 
 export type StackProps = React.PropsWithChildren<{
+	/** An Array of Components or Component and props. The Component must accept and return children. */
 	components?: StackComponent[]
 }>
 
