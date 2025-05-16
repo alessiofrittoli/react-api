@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { childrenFn, isComponentType, isReactNode } from '@/utils'
 
 
@@ -126,11 +126,26 @@ describe('childrenFn', () => {
 
 	it( 'calls the function with arguments if children is a function', () => {
 
-		const fn = jest.fn( ( a: number, b: string ) => <div>{a}-{b}</div> )
+		const fn = jest.fn( ( a: number, b: string ) => <div>{ a }-{ b }</div> )
 		const result = childrenFn( fn, 1, 'foo' )
 		
 		expect( fn ).toHaveBeenCalledWith( 1, 'foo' )
 		expect( React.isValidElement( result ) ).toBe( true )
+
+	} )
+
+
+	it( 'supports an Array of React.ReactNode or functions', () => {
+
+		const jsx		= <div>Test</div>
+		const fn		= jest.fn( ( a: number, b: string ) => <div>{ a }-{ b }</div> )
+		const fn2		= jest.fn( ( a: number, b: string ) => <div>{ a }-{ b }</div> )
+		const result	= childrenFn( [ fn, fn2, jsx ], 1, 'foo' )
+		
+		expect( fn ).toHaveBeenCalledWith( 1, 'foo' )
+		expect( fn2 ).toHaveBeenCalledWith( 1, 'foo' )
+		expect( result.at( 2 ) ).toEqual( <Fragment key={ 2 }>{ jsx }</Fragment> )
+		expect( result.every( React.isValidElement ) ).toBe( true )
 
 	} )
 
