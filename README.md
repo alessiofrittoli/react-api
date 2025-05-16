@@ -334,6 +334,104 @@ const somefunction = ( Component: React.ComponentType | React.ReactNode ) => {
 
 ---
 
+##### `childrenFn`
+
+Render `children` which could be possible a callable function.
+
+<details>
+
+<summary style="cursor:pointer">Type Parameters</summary>
+
+| Parameter | Default   | Description |
+|-----------|-----------|-------------|
+| `T`       | `FunctionChildren<U>` | The `children` type which extends the `FunctionChildren<U>` interface. |
+| `U`       | `unknown[]` | An Array defining optional arguments passed to the `children` function. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Parameters</summary>
+
+| Parameter  | Type | Description |
+|------------|------|-------------|
+| `children` | `T`  | The `children` to render. |
+| `args`     | `U`  | (Optional) Arguments passed to `children` if is a function. |
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Returns</summary>
+
+Type: `React.ReactNode`
+
+The rendered `children`. If `children` is a function, the result of that function is returned.
+
+</details>
+
+---
+
+<details>
+
+<summary style="cursor:pointer">Usage</summary>
+
+##### Define a Component that render a `FunctionChildren`
+
+```tsx
+'use client'
+
+import { useState } from 'react'
+import { childrenFn, type FunctionChildren } from '@alessiofrittoli/react-api'
+// or
+import { childrenFn, type FunctionChildren } from '@alessiofrittoli/react-api/utils'
+
+interface ComponentProps
+{
+  children?: FunctionChildren<[ state: boolean ]>
+}
+
+const Component: React.FC<ComponentProps> = ( { children } ) => {
+
+  const [ state, setState ] = useState( false )
+
+  return (
+    <div>
+      { childrenFn( children, state ) }
+    </dib>
+  )
+}
+```
+
+---
+
+##### Use a Component that accepts a `FunctionChildren`
+
+```tsx
+'use client'
+
+const Component2: React.FC<ComponentProps> = () => {
+
+  return (
+    <Component>
+      { ( state ) => {
+       return (
+        <div>children has access to `state` - { state }</div>
+       )
+      } }
+    </Component>
+  )
+}
+```
+
+</details>
+
+---
+
 ### Development
 
 #### Install depenendencies
