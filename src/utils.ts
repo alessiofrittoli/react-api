@@ -37,7 +37,11 @@ export const isReactNode = ( input: unknown ): input is React.ReactNode => (
  * 
  * @template T An Array defining optional arguments passed to the `children` function.
  */
-export type FunctionChildren<T extends unknown[]> = React.ReactNode | ( ( ...args: T ) => React.ReactNode )
+export type FunctionChildren<T extends unknown[]> = (
+	| React.ReactNode
+	| ( ( ...args: T ) => React.ReactNode )
+	| FunctionChildren<T>[]
+)
 
 
 /**
@@ -51,6 +55,16 @@ export type FunctionChildren<T extends unknown[]> = React.ReactNode | ( ( ...arg
  * 
  * @returns The rendered `children`. If `children` is a function, the result of that function is returned.
  */
-export const childrenFn = <T extends FunctionChildren<U>, U extends unknown[]>( children: T, ...args: U ): React.ReactNode => (
-	typeof children === 'function' ? children( ...args ) : children
-)
+export const childrenFn = <T extends FunctionChildren<U>, U extends unknown[]>( children: T, ...args: U ): React.ReactNode => {
+	
+	if ( Array.isArray( children ) ) {
+		return children.map( children => childrenFn( children, ...args ) )
+	}
+
+	if ( typeof children === 'function' ) {
+		return children( ...args )
+	}
+
+	return children
+
+}

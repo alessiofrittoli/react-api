@@ -417,13 +417,29 @@ const Component: React.FC<ComponentProps> = ( { children } ) => {
 const Component2: React.FC<ComponentProps> = () => {
 
   return (
-    <Component>
-      { ( state ) => {
-       return (
-        <div>children has access to `state` - { state }</div>
-       )
-      } }
-    </Component>
+    <div>
+      <Component>
+        { ( state ) => {
+          return (
+            <div>children has access to `state` - { state }</div>
+          )
+        } }
+      </Component>
+      {/* multiple children accepted too */}
+      <Component>
+        { ( state ) => {
+          return (
+            <div>children has access to `state` - { state }</div>
+          )
+        } }
+        { ( state ) => {
+          return (
+            <div>multiple children are accepted too</div>
+          )
+        } }
+        <div>Another React.JSX.Element</div>
+      </Component>
+    </div>
   )
 }
 ```
