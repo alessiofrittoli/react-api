@@ -14,6 +14,8 @@ export type StackProps = React.PropsWithChildren<{
 /**
  * Easily stack components avoiding creating a big Component stack pyramid.
  * 
+ * @deprecated This Component is now part of [`@alessiofrittoli/react-components`](https://npmjs.com/package/@alessiofrittoli/react-components) and it will be removed since v1.0.0 release.
+ * 
  * @example
  * 
  * #### Basic Component
@@ -61,3 +63,13 @@ export const Stack: React.FC<StackProps> = (
 		return <Component>{ acc }</Component>
 	}, children )
 )
+
+export const Prova: React.FC = () => {
+
+	return (
+		<Stack>
+
+		</Stack>
+	)
+
+}

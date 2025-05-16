@@ -62,6 +62,8 @@ pnpm i @alessiofrittoli/react-api
 
 Easily stack components avoiding creating a big Component stack pyramid.
 
+⚠️ This Component is now part of [`@alessiofrittoli/react-components`](https://npmjs.com/package/@alessiofrittoli/react-components) and it will be removed since v1.0.0 release.
+
 <details>
 
 <summary style="cursor:pointer">Component Props</summary>
@@ -145,6 +147,8 @@ export const AppProviders: React.FC<React.PropsWithChildren> = ( { children } ) 
 ###### `WithGenerator`
 
 Transform your generator function into a React.js Component.
+
+⚠️ This Component is now part of [`@alessiofrittoli/react-components`](https://npmjs.com/package/@alessiofrittoli/react-components) and it will be removed since v1.0.0 release.
 
 <details>
 
