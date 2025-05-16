@@ -63,13 +63,3 @@ export const Stack: React.FC<StackProps> = (
 		return <Component>{ acc }</Component>
 	}, children )
 )
-
-export const Prova: React.FC = () => {
-
-	return (
-		<Stack>
-
-		</Stack>
-	)
-
-}

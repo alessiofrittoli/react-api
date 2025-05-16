@@ -1,4 +1,6 @@
 import { isValidElement } from 'react'
+import { Fragment } from 'react/jsx-runtime'
+
 
 /**
  * Check if the given `input` is a React ComponentType.
@@ -45,6 +47,16 @@ export type FunctionChildren<T extends unknown[]> = (
 
 
 /**
+ * Represent a `React.ReactNode` or a callable function that returns a `React.ReactNode`.
+ * 
+ * @template T An Array defining optional arguments passed to the `children` function.
+ */
+export type RenderedFunctionChildren<T extends FunctionChildren<U>, U extends unknown[]> = (
+	T extends FunctionChildren<U>[] ? React.ReactNode[] : React.ReactNode
+)
+
+
+/**
  * Render `children` which could be possible a callable function.
  * 
  * @template T The `children` type which extends the `FunctionChildren<U>` interface.
@@ -55,16 +67,18 @@ export type FunctionChildren<T extends unknown[]> = (
  * 
  * @returns The rendered `children`. If `children` is a function, the result of that function is returned.
  */
-export const childrenFn = <T extends FunctionChildren<U>, U extends unknown[]>( children: T, ...args: U ): React.ReactNode => {
+export const childrenFn = <T extends FunctionChildren<U>, U extends unknown[]>( children: T, ...args: U ): RenderedFunctionChildren<T, U> => {
 	
 	if ( Array.isArray( children ) ) {
-		return children.map( children => childrenFn( children, ...args ) )
+		return children.map( ( children, index ) => (
+			<Fragment key={ index }>{ childrenFn( children, ...args ) }</Fragment>
+		) )
 	}
 
 	if ( typeof children === 'function' ) {
-		return children( ...args )
+		return children( ...args ) as RenderedFunctionChildren<T, U>
 	}
 
-	return children
+	return children as RenderedFunctionChildren<T, U>
 
 }
