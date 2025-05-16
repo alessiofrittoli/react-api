@@ -5,6 +5,8 @@ export * from './GeneratorComponent'
 /**
  * Transform your generator function into a React.js Component.
  * 
+ * @deprecated This Component is now part of [`@alessiofrittoli/react-components`](https://npmjs.com/package/@alessiofrittoli/react-components) and it will be removed since v1.0.0 release.
+ * 
  * @param fn The async generator function.
  * @usage
  * 
