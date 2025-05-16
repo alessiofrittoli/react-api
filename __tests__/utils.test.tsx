@@ -1,5 +1,5 @@
 import React from 'react'
-import { isComponentType, isReactNode } from '@/utils'
+import { childrenFn, isComponentType, isReactNode } from '@/utils'
 
 
 describe( 'isComponentType', () => {
@@ -91,4 +91,57 @@ describe( 'isReactNode', () => {
 		expect( isReactNode( () => {} ) ).toBe( false )
 		expect( isReactNode( Symbol( 'test' ) ) ).toBe( false )
 	} )
+} )
+
+
+describe('childrenFn', () => {
+
+	it( 'returns the children if it is a ReactNode (string)', () => {
+		expect( childrenFn( 'hello' ) ).toBe( 'hello' )
+	} )
+
+
+	it( 'returns the children if it is a ReactNode (number)', () => {
+		expect( childrenFn( 42 ) ).toBe( 42 )
+	} )
+
+
+	it( 'returns the children if it is a ReactNode (React element)', () => {
+		
+		const element = <div>Test</div>
+		expect( childrenFn( element ) ).toBe( element )
+
+	} )
+
+
+	it( 'calls the function if children is a function (no args)', () => {
+
+		const fn = jest.fn( () => <span>Called</span> )
+		const result = childrenFn( fn )
+		expect( fn ).toHaveBeenCalled()
+		expect( React.isValidElement( result ) ).toBe( true )
+
+	} )
+
+
+	it( 'calls the function with arguments if children is a function', () => {
+
+		const fn = jest.fn( ( a: number, b: string ) => <div>{a}-{b}</div> )
+		const result = childrenFn( fn, 1, 'foo' )
+		
+		expect( fn ).toHaveBeenCalledWith( 1, 'foo' )
+		expect( React.isValidElement( result ) ).toBe( true )
+
+	} )
+
+
+	it( 'returns undefined if children is undefined', () => {
+		expect( childrenFn( undefined ) ).toBeUndefined()
+	} )
+
+
+	it( 'returns null if children is null', () => {
+		expect( childrenFn( null ) ).toBeNull()
+	} )
+
 } )
