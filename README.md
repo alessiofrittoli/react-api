@@ -17,7 +17,7 @@
 [sponsor-badge]: https://img.shields.io/static/v1?label=Fund%20this%20package&message=%E2%9D%A4&logo=GitHub&color=%23DB61A2
 [sponsor-url]: https://github.com/sponsors/alessiofrittoli
 
-## TypeScript React API utilities and Components
+## TypeScript React API utilities
 
 ### Table of Contents
 
