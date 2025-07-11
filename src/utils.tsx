@@ -39,7 +39,7 @@ export const isReactNode = ( input: unknown ): input is React.ReactNode => (
  * 
  * @template T An Array defining optional arguments passed to the `children` function.
  */
-export type FunctionChildren<T extends unknown[]> = (
+export type FunctionChildren<T extends unknown[] = []> = (
 	| React.ReactNode
 	| ( ( ...args: T ) => React.ReactNode )
 	| FunctionChildren<T>[]
