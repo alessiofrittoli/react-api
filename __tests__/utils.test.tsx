@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, lazy } from 'react'
 import { childrenFn, isComponentType, isReactNode } from '@/utils'
 
 
@@ -25,6 +25,16 @@ describe( 'isComponentType', () => {
 		}
 
 		expect( isComponentType( ClassComponent ) ).toBe( true )
+
+	} )
+
+	it( 'returns true for a lazy imported component', () => {
+
+		const FunctionalComponent = lazy( async () => ( {
+			default: () => <div />
+		} ) )
+
+		expect( isComponentType( FunctionalComponent ) ).toBe( true )
 
 	} )
 

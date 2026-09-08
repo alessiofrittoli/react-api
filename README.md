@@ -13,7 +13,6 @@
 [downloads-badge]: https://img.shields.io/npm/dm/%40alessiofrittoli%2Freact-api.svg
 [deps-badge]: https://img.shields.io/librariesio/release/npm/%40alessiofrittoli%2Freact-api
 [deps-url]: https://libraries.io/npm/%40alessiofrittoli%2Freact-api
-
 [sponsor-badge]: https://img.shields.io/static/v1?label=Fund%20this%20package&message=%E2%9D%A4&logo=GitHub&color=%23DB61A2
 [sponsor-url]: https://github.com/sponsors/alessiofrittoli
 
@@ -25,7 +24,7 @@
 - [API Reference](#api-reference)
   - [Utilities](#utilities)
 - [Development](#development)
-  - [Install depenendencies](#install-depenendencies)
+  - [Install dependencies](#install-dependencies)
   - [Build the source code](#build-the-source-code)
   - [ESLint](#eslint)
   - [Jest](#jest)
@@ -63,8 +62,8 @@ Check if the given `input` is a React ComponentType.
 
 <summary style="cursor:pointer">Type Parameters</summary>
 
-| Parameter | Default   | Description |
-|-----------|-----------|-------------|
+| Parameter | Default   | Description                      |
+| --------- | --------- | -------------------------------- |
 | `P`       | `unknown` | The props the component accepts. |
 
 </details>
@@ -76,7 +75,7 @@ Check if the given `input` is a React ComponentType.
 <summary style="cursor:pointer">Parameters</summary>
 
 | Parameter | Type      | Description         |
-|-----------|-----------|---------------------|
+| --------- | --------- | ------------------- |
 | `input`   | `unknown` | The input to check. |
 
 </details>
@@ -101,21 +100,17 @@ Type: `input is React.ComponentType<P>`
 <summary style="cursor:pointer">Usage</summary>
 
 ```tsx
-import { isComponentType } from '@alessiofrittoli/react-api'
+import { isComponentType } from "@alessiofrittoli/react-api";
 // or
-import { isComponentType } from '@alessiofrittoli/react-api/utils'
+import { isComponentType } from "@alessiofrittoli/react-api/utils";
 
-const somefunction = ( Component: React.ComponentType | React.ReactNode ) => {
+const somefunction = (Component: React.ComponentType | React.ReactNode) => {
+  if (isComponentType(Component)) {
+    return <Component />;
+  }
 
- if ( isComponentType( Component ) ) {
-  return <Component />
- }
-
- return (
-  <>{ Component }</>
- )
-
-}
+  return <>{Component}</>;
+};
 ```
 
 </details>
@@ -131,7 +126,7 @@ Check if the given `input` is a React Node.
 <summary style="cursor:pointer">Parameters</summary>
 
 | Parameter | Type      | Description         |
-|-----------|-----------|---------------------|
+| --------- | --------- | ------------------- |
 | `input`   | `unknown` | The input to check. |
 
 </details>
@@ -156,21 +151,17 @@ Type: `input is React.ReactNode`
 <summary style="cursor:pointer">Usage</summary>
 
 ```tsx
-import { isReactNode } from '@alessiofrittoli/react-api'
+import { isReactNode } from "@alessiofrittoli/react-api";
 // or
-import { isReactNode } from '@alessiofrittoli/react-api/utils'
+import { isReactNode } from "@alessiofrittoli/react-api/utils";
 
-const somefunction = ( Component: React.ComponentType | React.ReactNode ) => {
+const somefunction = (Component: React.ComponentType | React.ReactNode) => {
+  if (isReactNode(Component)) {
+    return <>{Component}</>;
+  }
 
- if ( isReactNode( Component ) ) {
-  return <>{ Component }</>
- }
-
- return (
-  <Component />
- )
-
-}
+  return <Component />;
+};
 ```
 
 </details>
@@ -185,10 +176,10 @@ Render `children` which could be possible a callable function.
 
 <summary style="cursor:pointer">Type Parameters</summary>
 
-| Parameter | Default   | Description |
-|-----------|-----------|-------------|
-| `T`       | `FunctionChildren<U>` | The `children` type which extends the `FunctionChildren<U>` interface. |
-| `U`       | `unknown[]` | An Array defining optional arguments passed to the `children` function. |
+| Parameter | Default               | Description                                                             |
+| --------- | --------------------- | ----------------------------------------------------------------------- |
+| `T`       | `FunctionChildren<U>` | The `children` type which extends the `FunctionChildren<U>` interface.  |
+| `U`       | `unknown[]`           | An Array defining optional arguments passed to the `children` function. |
 
 </details>
 
@@ -198,9 +189,9 @@ Render `children` which could be possible a callable function.
 
 <summary style="cursor:pointer">Parameters</summary>
 
-| Parameter  | Type | Description |
-|------------|------|-------------|
-| `children` | `T`  | The `children` to render. |
+| Parameter  | Type | Description                                                 |
+| ---------- | ---- | ----------------------------------------------------------- |
+| `children` | `T`  | The `children` to render.                                   |
 | `args`     | `U`  | (Optional) Arguments passed to `children` if is a function. |
 
 </details>
@@ -255,36 +246,29 @@ const Component: React.FC<ComponentProps> = ( { children } ) => {
 ##### Use a Component that accepts a `FunctionChildren`
 
 ```tsx
-'use client'
+"use client";
 
 const Component2: React.FC<ComponentProps> = () => {
-
   return (
     <div>
       <Component>
-        { ( state ) => {
-          return (
-            <div>children has access to `state` - { state }</div>
-          )
-        } }
+        {(state) => {
+          return <div>children has access to `state` - {state}</div>;
+        }}
       </Component>
       {/* multiple children accepted too */}
       <Component>
-        { ( state ) => {
-          return (
-            <div>children has access to `state` - { state }</div>
-          )
-        } }
-        { ( state ) => {
-          return (
-            <div>multiple children are accepted too</div>
-          )
-        } }
+        {(state) => {
+          return <div>children has access to `state` - {state}</div>;
+        }}
+        {(state) => {
+          return <div>multiple children are accepted too</div>;
+        }}
         <div>Another React.JSX.Element</div>
       </Component>
     </div>
-  )
-}
+  );
+};
 ```
 
 </details>
@@ -293,7 +277,7 @@ const Component2: React.FC<ComponentProps> = () => {
 
 ### Development
 
-#### Install depenendencies
+#### Install dependencies
 
 ```bash
 npm install
@@ -315,7 +299,7 @@ pnpm build
 
 #### [ESLint](https://www.npmjs.com/package/eslint)
 
-warnings / errors check.
+Run warnings and errors checks.
 
 ```bash
 pnpm lint
