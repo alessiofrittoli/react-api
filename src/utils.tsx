@@ -13,9 +13,14 @@ import { Fragment } from 'react/jsx-runtime'
 export const isComponentType = <
 	P = unknown
 >( input: unknown ): input is React.ComponentType<P> => (
-	typeof input === 'function'
+	typeof input === 'function' ||
+	!! (
+		input &&
+		typeof input === "object" &&
+		"$$typeof" in input &&
+		input.$$typeof === Symbol.for("react.lazy")
+	)
 )
-
 
 /**
  * Check if the given `input` is a React Node.
