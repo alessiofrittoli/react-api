@@ -1,35 +1,58 @@
-# React API ✇
+<h1 align="center">React API ✇</h1>
+<h2 align="center">
+  Next.js API utility library
+</h2>
+<p align="center">
+  <a href="https://npmjs.org/package/@alessiofrittoli/react-api">
+    <img src="https://img.shields.io/npm/v/@alessiofrittoli/react-api" alt="Latest version"/>
+  </a>
+  <a href="https://coveralls.io/github/alessiofrittoli/react-api">
+    <img src="https://coveralls.io/repos/github/alessiofrittoli/react-api/badge.svg" alt="Test coverage"/>
+  </a>
+  <a href="https://socket.dev/npm/package/@alessiofrittoli/react-api/overview">
+    <img src="https://socket.dev/api/badge/npm/package/@alessiofrittoli/react-api" alt="Socket Security score"/>
+  </a>
+  <a href="https://npmjs.org/package/@alessiofrittoli/react-api">
+    <img src="https://img.shields.io/npm/dm/@alessiofrittoli/react-api.svg" alt="npm downloads"/>
+  </a>
+  <a href="https://bundlephobia.com/package/@alessiofrittoli/react-api">
+    <img src="https://badgen.net/bundlephobia/dependency-count/@alessiofrittoli/react-api" alt="Dependencies"/>
+  </a>
+  <a href="https://libraries.io/npm/%40alessiofrittoli%2Freact-api">
+    <img src="https://img.shields.io/librariesio/release/npm/@alessiofrittoli/react-api" alt="Dependencies status"/>
+  </a>
+</p>
+<p align="center">
+  <a href="https://bundlephobia.com/package/@alessiofrittoli/react-api">
+    <img src="https://badgen.net/bundlephobia/min/@alessiofrittoli/react-api" alt="minified"/>
+  </a>
+  <a href="https://bundlephobia.com/package/@alessiofrittoli/react-api">
+    <img src="https://badgen.net/bundlephobia/minzip/@alessiofrittoli/react-api" alt="minizipped"/>
+  </a>
+  <a href="https://bundlephobia.com/package/@alessiofrittoli/react-api">
+    <img src="https://badgen.net/bundlephobia/tree-shaking/@alessiofrittoli/react-api" alt="Tree shakable"/>
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/sponsors/alessiofrittoli">
+    <img src="https://img.shields.io/static/v1?label=Fund%20this%20package&message=%E2%9D%A4&logo=GitHub&color=%23DB61A2" alt="Fund this package"/>
+  </a>
+</p>
 
-[![NPM Latest Version][version-badge]][npm-url] [![Coverage Status][coverage-badge]][coverage-url] [![Socket Status][socket-badge]][socket-url] [![NPM Monthly Downloads][downloads-badge]][npm-url] [![Dependencies][deps-badge]][deps-url]
-
-[![GitHub Sponsor][sponsor-badge]][sponsor-url]
-
-[version-badge]: https://img.shields.io/npm/v/%40alessiofrittoli%2Freact-api
-[npm-url]: https://npmjs.org/package/%40alessiofrittoli%2Freact-api
-[coverage-badge]: https://coveralls.io/repos/github/alessiofrittoli/react-api/badge.svg
-[coverage-url]: https://coveralls.io/github/alessiofrittoli/react-api
-[socket-badge]: https://socket.dev/api/badge/npm/package/@alessiofrittoli/react-api
-[socket-url]: https://socket.dev/npm/package/@alessiofrittoli/react-api/overview
-[downloads-badge]: https://img.shields.io/npm/dm/%40alessiofrittoli%2Freact-api.svg
-[deps-badge]: https://img.shields.io/librariesio/release/npm/%40alessiofrittoli%2Freact-api
-[deps-url]: https://libraries.io/npm/%40alessiofrittoli%2Freact-api
 [sponsor-badge]: https://img.shields.io/static/v1?label=Fund%20this%20package&message=%E2%9D%A4&logo=GitHub&color=%23DB61A2
 [sponsor-url]: https://github.com/sponsors/alessiofrittoli
 
-## TypeScript React API utilities
+### Table of Content
 
-### Table of Contents
-
-- [Getting started](#getting-started)
+- [Development](#development)
+  - [Local development](#local-development)
+  - [Production build](#production-build)
+  - [Unit tests](#unit-tests)
+    - [Run tests with coverage](#run-tests-with-coverage)
+  - [Contributing](#contributing)
+  - [Security](#security)
 - [API Reference](#api-reference)
   - [Utilities](#utilities)
-- [Development](#development)
-  - [Install dependencies](#install-dependencies)
-  - [Build the source code](#build-the-source-code)
-  - [ESLint](#eslint)
-  - [Jest](#jest)
-- [Contributing](#contributing)
-- [Security](#security)
 - [Credits](#made-with-)
 
 ---
@@ -47,6 +70,84 @@ or using `pnpm`
 ```bash
 pnpm i @alessiofrittoli/react-api
 ```
+
+---
+
+### Development
+
+Run the following to start development
+
+```shell
+nvm use
+
+pnpm i
+```
+
+#### Local development
+
+Run the following
+
+```shell
+pnpm dev
+```
+
+This will generate unminified output code, sourcemaps and will enable source file watcher.
+
+---
+
+#### Production build
+
+Run the following to create a local production build
+
+```shell
+pnpm build
+```
+
+This will generate minified output code without sourcemaps.
+
+---
+
+#### Unit tests
+
+Run all the defined test suites by running the following:
+
+```shell
+# Run tests and watch file changes.
+pnpm test:watch
+
+# Run tests in a CI environment.
+pnpm test:ci
+```
+
+---
+
+##### Run tests with coverage
+
+An HTTP server is then started to serve coverage files from `./coverage` folder.
+
+⚠️ You may see a blank page the first time you run this command. Simply refresh the browser to see the updates.
+
+```shell
+pnpm test:coverage:serve
+```
+
+---
+
+#### Contributing
+
+Contributions are truly welcome!
+
+Please refer to the [Contributing Doc](./CONTRIBUTING.md) for more information on how to start contributing to this project.
+
+Help keep this project up to date with [GitHub Sponsor][sponsor-url].
+
+[![GitHub Sponsor][sponsor-badge]][sponsor-url]
+
+---
+
+#### Security
+
+If you believe you have found a security vulnerability, we encourage you to **_responsibly disclose this and NOT open a public issue_**. We will investigate all legitimate reports. Email `security@alessiofrittoli.it` to disclose any security vulnerabilities.
 
 ---
 
@@ -100,17 +201,17 @@ Type: `input is React.ComponentType<P>`
 <summary style="cursor:pointer">Usage</summary>
 
 ```tsx
-import { isComponentType } from "@alessiofrittoli/react-api";
 // or
-import { isComponentType } from "@alessiofrittoli/react-api/utils";
+import { isComponentType } from '@alessiofrittoli/react-api/utils'
+import { isComponentType } from '@alessiofrittoli/react-api'
 
 const somefunction = (Component: React.ComponentType | React.ReactNode) => {
   if (isComponentType(Component)) {
-    return <Component />;
+    return <Component />
   }
 
-  return <>{Component}</>;
-};
+  return <>{Component}</>
+}
 ```
 
 </details>
@@ -151,17 +252,17 @@ Type: `input is React.ReactNode`
 <summary style="cursor:pointer">Usage</summary>
 
 ```tsx
-import { isReactNode } from "@alessiofrittoli/react-api";
 // or
-import { isReactNode } from "@alessiofrittoli/react-api/utils";
+import { isReactNode } from '@alessiofrittoli/react-api/utils'
+import { isReactNode } from '@alessiofrittoli/react-api'
 
 const somefunction = (Component: React.ComponentType | React.ReactNode) => {
   if (isReactNode(Component)) {
-    return <>{Component}</>;
+    return <>{Component}</>
   }
 
-  return <Component />;
-};
+  return <Component />
+}
 ```
 
 </details>
@@ -246,106 +347,34 @@ const Component: React.FC<ComponentProps> = ( { children } ) => {
 ##### Use a Component that accepts a `FunctionChildren`
 
 ```tsx
-"use client";
+'use client'
 
 const Component2: React.FC<ComponentProps> = () => {
   return (
     <div>
       <Component>
-        {(state) => {
-          return <div>children has access to `state` - {state}</div>;
+        {state => {
+          return <div>children has access to `state` - {state}</div>
         }}
       </Component>
       {/* multiple children accepted too */}
       <Component>
-        {(state) => {
-          return <div>children has access to `state` - {state}</div>;
+        {state => {
+          return <div>children has access to `state` - {state}</div>
         }}
-        {(state) => {
-          return <div>multiple children are accepted too</div>;
+        {state => {
+          return <div>multiple children are accepted too</div>
         }}
         <div>Another React.JSX.Element</div>
       </Component>
     </div>
-  );
-};
+  )
+}
 ```
 
 </details>
 
 ---
-
-### Development
-
-#### Install dependencies
-
-```bash
-npm install
-```
-
-or using `pnpm`
-
-```bash
-pnpm i
-```
-
-#### Build the source code
-
-Run the following command to test and build code for distribution.
-
-```bash
-pnpm build
-```
-
-#### [ESLint](https://www.npmjs.com/package/eslint)
-
-Run warnings and errors checks.
-
-```bash
-pnpm lint
-```
-
-#### [Jest](https://npmjs.com/package/jest)
-
-Run all the defined test suites by running the following:
-
-```bash
-# Run tests and watch file changes.
-pnpm test:watch
-
-# Run tests in a CI environment.
-pnpm test:ci
-```
-
-- See [`package.json`](./package.json) file scripts for more info.
-
-Run tests with coverage.
-
-An HTTP server is then started to serve coverage files from `./coverage` folder.
-
-⚠️ You may see a blank page the first time you run this command. Simply refresh the browser to see the updates.
-
-```bash
-test:coverage:serve
-```
-
----
-
-### Contributing
-
-Contributions are truly welcome!
-
-Please refer to the [Contributing Doc](./CONTRIBUTING.md) for more information on how to start contributing to this project.
-
-Help keep this project up to date with [GitHub Sponsor][sponsor-url].
-
-[![GitHub Sponsor][sponsor-badge]][sponsor-url]
-
----
-
-### Security
-
-If you believe you have found a security vulnerability, we encourage you to **_responsibly disclose this and NOT open a public issue_**. We will investigate all legitimate reports. Email `security@alessiofrittoli.it` to disclose any security vulnerabilities.
 
 ### Made with ☕
 
